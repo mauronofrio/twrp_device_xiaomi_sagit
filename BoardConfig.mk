@@ -23,6 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+DEVICE_PATH := device/xiaomi/sagit
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -85,17 +87,59 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
-# TWRP specific build flags
-BOARD_HAS_NO_REAL_SDCARD := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_DEFAULT_BRIGHTNESS := 2047
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_EXCLUDE_SUPERSU := true
-TW_EXTRA_LANGUAGES := true
-TW_INCLUDE_CRYPTO := true
-#TW_INCLUDE_NTFS_3G := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_MAX_BRIGHTNESS := 4095
-TW_SCREEN_BLANK_ON_BOOT := true
+# --------------------------------------
+# TWRP recovery specific setting - start
+# --------------------------------------
+
 TW_THEME := portrait_hdpi
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+
+# Bootloader
+TARGET_USES_UEFI := true
+
+# Encryption
+TW_INCLUDE_CRYPTO := true
+
+# Recovery
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+# Workaround for error copying vendor files to recovery ramdisk
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_VENDOR := vendor
+
+# additional filesystem support
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TW_INCLUDE_NTFS_3G := true
+TW_NO_EXFAT := false
+TW_NO_EXFAT_FUSE := false
+BOARD_SUPPRESS_SECURE_ERASE := true
+TW_IGNORE_MISC_WIPE_DATA := true
+
+# Other TWRP Configuration
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := en
+TW_EXCLUDE_SUPERSU := true
+
+# Disable Mouse Cursor
+TW_INPUT_BLACKLIST := "hbtp_vm"
+
+# Display Brightness
+TW_DEFAULT_BRIGHTNESS := 2047
+TW_MAX_BRIGHTNESS := 4095
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+
+# Disable Flashlight
+OF_FLASHLIGHT_ENABLE := 0
+
+# --------------------------------------
+# TWRP recovery specific setting - end
+# --------------------------------------
+
