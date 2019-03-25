@@ -44,7 +44,7 @@ cp /s/vendor/lib64/libtime_genoff.so /vendor/lib64/
 cp /s/vendor/lib64/libkeymasterdeviceutils.so /vendor/lib64/
 cp /s/vendor/lib64/libkeymasterprovision.so /vendor/lib64/
 cp /s/vendor/lib64/libkeymasterutils.so /vendor/lib64/
-cp /s/vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so /vendor/lib64/
+cp /s/vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so /vendor/lib64/
 cp /s/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so /vendor/lib64/hw/
 cp /s/vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so /vendor/lib64/hw/
 cp /s/vendor/lib64/hw/gatekeeper.msm8998.so /vendor/lib64/hw/
